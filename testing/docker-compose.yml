@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  openttd-mygame:
+    container_name: openttd-mygame
+    restart: "no"
+    user: 1000:1000
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    environment:
+      - "LOAD_TYPE=none"
+    ports:
+      - "3979:3979/tcp"
+      - "3979:3979/udp"
+    volumes:
+      - ./data:/app/data/openttd
+      - ./config:/app/config/openttd
+    tty: true
+    stdin_open: true
