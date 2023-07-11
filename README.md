@@ -1,6 +1,7 @@
 # OpenTTD Server
 
-[//]: # ([![dockeri.co]&#40;https://dockeri.co/image/retrodaredevil/openttd&#41;]&#40;https://hub.docker.com/r/retrodaredevil/openttd&#41;)
+[![](https://img.shields.io/badge/Docker%20Image-retrodaredevil/openttd)](https://github.com/retrodaredevil/openttd-docker/pkgs/container/openttd)
+[![](https://img.shields.io/github/stars/retrodaredevil/openttd-docker.svg?style=social)](https://github.com/retrodaredevil/openttd-docker/stargazers)
 
 This docker container contains the `openttd` binary and utilities to make running and loading save files easier.
 This is designed to be used as a dedicated server for OpenTTD.
@@ -30,11 +31,28 @@ This container can be configured using environment variables.
 | `directory`       | The most recent save file in a given directory is loaded.                                                                                                                           | Is the path to the directory containing save file(s) |
 | `recursive`       | The most recent save file in a given directory and its sub-directories is loaded. Unlike `directory`, this will look in sub-directories and their subdirectories, etc, recursively. | Is the path to the directory containing save file(s) |
 
-## `docker run` examples
+## `docker compose` examples
 
-
-## About
-This container is similar to [bateau/openttd](https://hub.docker.com/r/bateau/openttd) ([github here](https://github.com/bateau84/openttd)).
-
-### TODO
-* Set up a github action similar to https://github.com/bateau84/openttd/blob/master/.github/workflows/dockerimage.yml
+```yaml
+version: "3.7"
+services:
+  openttd:
+    image: ghcr.io/retrodaredevil/openttd:edge-13.3
+    container_name: openttd
+    restart: "no"
+    user: 2000:2000
+    ports:
+      - "3979:3979/udp"
+      - "3979:3979/tcp"
+    environment:
+      - "LOAD_TYPE=none"
+      #- "LOAD_TYPE=directory"
+      #- "LOAD_FROM=/app/data/openttd/save/autosave"
+      #- "LOAD_TYPE=file"
+      #- "LOAD_FROM=/app/data/openttd/save/main.sav"
+    volumes:
+      - ./data:/app/data/openttd
+      - ./config:/app/config/openttd
+    tty: true
+    stdin_open: true
+```
