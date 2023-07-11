@@ -5,7 +5,6 @@
 # ENV XDG_DATA_HOME and XDG_CONFIG_HOME are defaulted in Dockerfile
 # ENV LOAD_TYPE and LOAD_FROM should also be available here
 # $@ contains arguments we should pass to /usr/games/openttd
-# ENV EXTRA_ARGS may contain extra arguments to pass in
 
 arguments=("$@")
 case "$LOAD_TYPE" in
@@ -45,4 +44,4 @@ case "$LOAD_TYPE" in
   ;;
 esac
 
-/usr/games/openttd "${arguments[@]}"
+/opt/openttd/openttd "${arguments[@]}"
