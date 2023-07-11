@@ -20,10 +20,10 @@ RUN tar -xf /tmp/openttd.tar.xz -C /tmp && mv /tmp/openttd-${OPENTTD_VERSION}-li
 FROM debian:11-slim
 
 
-RUN mkdir -p /usr/share/games/openttd/baseset/
+RUN mkdir -p /opt/openttd/baseset
 # We don't actually have to extract the tar archive, since openttd can read it
 # RUN tar -xf /tmp/opengfx.tar --directory /usr/share/games/openttd/baseset/ && rm -f /tmp/opengfx.tar
-COPY --from=download-env /tmp/opengfx.tar /usr/share/games/openttd/baseset/
+COPY --from=download-env /tmp/opengfx.tar /opt/openttd/baseset/
 
 COPY --from=download-env /tmp/openttd /opt/openttd
 
