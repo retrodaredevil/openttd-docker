@@ -1,6 +1,6 @@
 # OpenTTD Server
 
-[![](https://img.shields.io/badge/Docker%20Image-retrodaredevil/openttd)](https://github.com/retrodaredevil/openttd-docker/pkgs/container/openttd)
+[![](https://img.shields.io/badge/Docker%20Image-retrodaredevil/openttd-blue)](https://github.com/retrodaredevil/openttd-docker/pkgs/container/openttd)
 [![](https://img.shields.io/github/stars/retrodaredevil/openttd-docker.svg?style=social)](https://github.com/retrodaredevil/openttd-docker/stargazers)
 
 This docker container contains the `openttd` binary and utilities to make running and loading save files easier.
