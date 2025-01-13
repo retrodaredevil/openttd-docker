@@ -19,6 +19,10 @@ RUN tar -xf /tmp/openttd.tar.xz -C /tmp && mv /tmp/openttd-${OPENTTD_VERSION}-li
 
 FROM debian:12-slim
 
+RUN apt-get update && apt-get install -y \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
 
 RUN mkdir -p /opt/openttd/baseset
 # We don't actually have to extract the tar archive, since openttd can read it
