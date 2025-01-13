@@ -1,4 +1,4 @@
-FROM debian:11-slim AS download-env
+FROM debian:12-slim AS download-env
 
 # wget to download
 # unzip to unzip
@@ -12,12 +12,12 @@ RUN wget -q -O /tmp/opengfx.zip "https://cdn.openttd.org/opengfx-releases/${OPEN
 RUN unzip -p /tmp/opengfx.zip "opengfx-${OPENGFX_VERSION}.tar" >/tmp/opengfx.tar && rm -f /tmp/opengfx.zip
 
 # Releases here: https://github.com/OpenTTD/OpenTTD/releases
-ARG OPENTTD_VERSION="13.3"
+ARG OPENTTD_VERSION
 RUN wget -q -O /tmp/openttd.tar.xz "https://cdn.openttd.org/openttd-releases/${OPENTTD_VERSION}/openttd-${OPENTTD_VERSION}-linux-generic-amd64.tar.xz"
 RUN tar -xf /tmp/openttd.tar.xz -C /tmp && mv /tmp/openttd-${OPENTTD_VERSION}-linux-generic-amd64 /tmp/openttd
 
 
-FROM debian:11-slim
+FROM debian:12-slim
 
 
 RUN mkdir -p /opt/openttd/baseset
